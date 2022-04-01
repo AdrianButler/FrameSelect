@@ -11,7 +11,7 @@ import java.net.URISyntaxException;
 public class FrameSelectApplication
 {
 
-    public static void main(String[] args) throws URISyntaxException
+    public static void main(String[] args)
     {
         UIController.start();
     }

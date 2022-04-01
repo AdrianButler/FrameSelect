@@ -5,16 +5,23 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 
-public class Triangle extends Polygon //TODO change from triangles to thin arrow heads
+public class Triangle extends Polygon
 {
     public Triangle(FrameViewer parent, Double rotation)
     {
         Double[] points = new Double[]
                 {
                         -50.0, 40.0,
+                        0.0, -60.0,
                         50.0, 40.0,
-                        0.0, -60.0
+                        40.0, 40.0,
+                        1.0, -45.0,
+                        -1.0, -45.0,
+                        -40.0, 40.0
                 };
+
+        setScaleX(0.5);
+        setScaleY(0.5);
 
         getPoints().addAll(points);
 
@@ -26,6 +33,19 @@ public class Triangle extends Polygon //TODO change from triangles to thin arrow
         setRotate(rotation);
 
         bindToParent(parent);
+
+        setOnMouseEntered(mouseEvent ->
+        {
+            setScaleX(0.75);
+            setScaleY(0.75);
+        });
+
+        setOnMouseExited(mouseEvent ->
+        {
+            setScaleX(0.5);
+            setScaleY(0.5);
+        });
+
 
         setOnMouseClicked(mouseEvent ->
         {
@@ -39,6 +59,7 @@ public class Triangle extends Polygon //TODO change from triangles to thin arrow
             }
         });
 
+        setPickOnBounds(true);
     }
 
     private void bindToParent(FrameViewer parent)
