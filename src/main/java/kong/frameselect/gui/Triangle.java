@@ -23,6 +23,7 @@ public class Triangle extends Polygon
         setScaleX(0.5);
         setScaleY(0.5);
 
+
         getPoints().addAll(points);
 
         setFill(Color.GREY);

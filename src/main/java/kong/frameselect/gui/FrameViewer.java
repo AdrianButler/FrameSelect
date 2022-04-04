@@ -5,27 +5,35 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
+import java.util.ArrayList;
+
 public class FrameViewer extends Pane
 {
     private ImageView imageView;
     private StackPane imageViewPositioner;
-    private Image[] frames;
+    private ArrayList<Image> frames;
     private int index;
 
-    public FrameViewer(Image[] frames)
+    public FrameViewer(ArrayList<Image> frames)
     {
         this.frames = frames;
 
         imageView = new ImageView();
-        imageView.setImage(frames[0]);
+        imageView.setImage(frames.get(0));
         bindImageView();
 
         Triangle leftArrow = new Triangle(this,270.0);
         Triangle rightArrow = new Triangle(this,90.0);
 
+        IndexBar indexBar = new IndexBar();
+        indexBar.setStyle("-fx-background-color: #00faa8");
+
+        indexBar.setTranslateX(10);
+        indexBar.setTranslateY(10);
+
         setStyle("-fx-background-color: #000000");
 
-        getChildren().addAll(imageViewPositioner, leftArrow, rightArrow);
+        getChildren().addAll(imageViewPositioner, leftArrow, rightArrow, indexBar);
     }
 
     private void bindImageView() // solution to center image in center of pane: https://stackoverflow.com/a/25601147/12568475
@@ -49,7 +57,7 @@ public class FrameViewer extends Pane
 
     public void nextFrame()
     {
-        if (index < frames.length - 1)
+        if (index < frames.size() - 1)
         {
             index += 1;
         }
@@ -59,7 +67,7 @@ public class FrameViewer extends Pane
             index = 0;
         }
 
-        imageView.setImage(frames[index]);
+        imageView.setImage(frames.get(index));
     }
 
     public void previousFrame()
@@ -70,16 +78,16 @@ public class FrameViewer extends Pane
         }
         else
         {
-            index = frames.length - 1;
+            index = frames.size() - 1;
         }
 
-        imageView.setImage(frames[index]);
+        imageView.setImage(frames.get(index));
     }
 
-    public void setFrames(Image[] frames)
+    public void setFrames(ArrayList<Image> frames)
     {
         this.frames = frames;
-        imageView.setImage(frames[0]);
+        imageView.setImage(frames.get(0));
     }
 
 }

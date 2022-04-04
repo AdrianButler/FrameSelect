@@ -3,13 +3,14 @@ package kong.frameselect.framesplitter;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import kong.frameselect.gui.FrameViewer;
-import kong.frameselect.gui.HomePage;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class FrameSplitTest extends Application
 {
@@ -23,13 +24,15 @@ public class FrameSplitTest extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
-        Image[] exampleImages = new Image[3];
-        exampleImages[0] = new Image(new File("C:\\Users\\butle\\OneDrive\\Pictures\\spike.jpg").toURI().toString());
-        exampleImages[1] = new Image(new File("C:\\Users\\butle\\OneDrive\\Pictures\\p-adventure-time-jeremy-shada.jpg").toURI().toString());
-        exampleImages[2] = new Image(new File("C:\\Users\\butle\\OneDrive\\Pictures\\pcwallpaper22.png").toURI().toString());
+        ArrayList<Image> exampleImages = new ArrayList<>();
+        exampleImages.add(0, new Image(new File("C:\\Users\\butle\\OneDrive\\Pictures\\spike.jpg").toURI().toString()));
+        exampleImages.add(1, new Image(new File("C:\\Users\\butle\\OneDrive\\Pictures\\p-adventure-time-jeremy-shada.jpg").toURI().toString()));
+        exampleImages.add(2, new Image(new File("C:\\Users\\butle\\OneDrive\\Pictures\\pcwallpaper22.png").toURI().toString()));
 
-        Scene scene = new Scene(new FrameViewer(exampleImages), 1000, 750);
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+        BorderPane window = new BorderPane();
+        window.setCenter(new FrameViewer(exampleImages));
+
+        Scene scene = new Scene(window, 1000, 750);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
