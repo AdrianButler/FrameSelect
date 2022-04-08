@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 
-public class UIController extends Application //TODO add option to change image
+public class UIController extends Application
 {
     private Scene scene;
     private HomePage homePage;

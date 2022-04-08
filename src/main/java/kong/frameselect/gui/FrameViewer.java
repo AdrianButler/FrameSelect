@@ -1,4 +1,4 @@
-package kong.frameselect.gui; //TODO make arrows transparent and add option to hide them
+package kong.frameselect.gui;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -72,7 +72,7 @@ public class FrameViewer extends Pane
             setFrames(fxImages);
         });
 
-        saveFrameButton.setOnAction(actionEvent ->
+        saveFrameButton.setOnAction(actionEvent -> //TODO this doesnt work on certain gifs??
         {
             if (index > 0)
             {
