@@ -5,7 +5,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import kong.frameselect.gui.FrameViewer;
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +13,11 @@ import java.util.ArrayList;
 
 public class FrameSplitTest extends Application
 {
+
+    public static void start()
+    {
+        launch();
+    }
 
     @Test
     void testFrameSplit()
@@ -35,10 +39,5 @@ public class FrameSplitTest extends Application
         Scene scene = new Scene(window, 1000, 750);
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
-
-    public static void start()
-    {
-        launch();
     }
 }

@@ -1,19 +1,9 @@
 package kong.frameselect.gui;
 
-import javafx.scene.effect.ColorAdjust;
-import javafx.scene.effect.Light;
-import javafx.scene.effect.Lighting;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 
-import javax.swing.text.Caret;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.net.URISyntaxException;
 
 public class IndexBar extends VBox//TODO reveal list of options (save, change gif)
@@ -31,8 +21,7 @@ public class IndexBar extends VBox//TODO reveal list of options (save, change gi
         try
         {
             caret = new Image(getClass().getResource("/kong/frameselect/Caret.png").toURI().toString());
-        }
-        catch (URISyntaxException e)
+        } catch (URISyntaxException e)
         {
             e.printStackTrace();
         }

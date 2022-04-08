@@ -1,7 +1,5 @@
 package kong.frameselect.gui;
 
-import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 
@@ -53,8 +51,7 @@ public class Triangle extends Polygon
             if (rotation == 90)
             {
                 parent.nextFrame();
-            }
-            else
+            } else
             {
                 parent.previousFrame();
             }
@@ -67,13 +64,12 @@ public class Triangle extends Polygon
     {
         layoutYProperty().bind(parent.heightProperty().divide(2));
 
-        if(getRotate() == 90)
+        if (getRotate() == 90)
         {
             layoutXProperty().bind(parent.widthProperty().subtract(50));
-        }
-        else
+        } else
         {
-         setLayoutX(50);
+            setLayoutX(50);
         }
     }
 

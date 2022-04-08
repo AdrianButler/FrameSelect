@@ -1,6 +1,5 @@
 package kong.frameselect.framesplitter;
 
-import javafx.embed.swing.SwingFXUtils;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -56,8 +55,7 @@ public class MediaSplitter
                     try
                     {
                         img = imageReader.read(frameIndex);
-                    }
-                    catch (IndexOutOfBoundsException e)
+                    } catch (IndexOutOfBoundsException e)
                     {
                         break;
                     }
@@ -107,21 +105,17 @@ public class MediaSplitter
 
                             baseImage.setBackground(new Color(0, 0, 0, 0));
                         }
-                    }
-
-                    else if (DISPOSAL_BACKGROUND.equals(imageMetaData.getDisposal()))
+                    } else if (DISPOSAL_BACKGROUND.equals(imageMetaData.getDisposal()))
                     {
                         baseImage.clearRect(x, y, img.getWidth(), img.getHeight());
                     }
                 }
                 return frames; // todo check if redundant
-            }
-            finally
+            } finally
             {
                 imageReader.dispose();
             }
-        }
-        catch (IOException e)
+        } catch (IOException e)
         {
             e.printStackTrace();
         }
@@ -134,7 +128,7 @@ public class MediaSplitter
         try
         {
             IIOMetadata metadata = reader.getImageMetadata(frameIndex);
-            IIOMetadataNode root = (IIOMetadataNode)metadata.getAsTree("javax_imageio_gif_image_1.0");
+            IIOMetadataNode root = (IIOMetadataNode) metadata.getAsTree("javax_imageio_gif_image_1.0");
             IIOMetadataNode gce = (IIOMetadataNode) root.getElementsByTagName("GraphicControlExtension").item(0);
 
             int delay = Integer.parseInt(gce.getAttribute("delayTime"));
@@ -156,13 +150,12 @@ public class MediaSplitter
             }
 
             return new ImageMetaData(frameIndex, delay, disposal, x, y);
-        }
-        catch (IOException e)
+        } catch (IOException e)
         {
             e.printStackTrace();
         }
 
-        return  null;
+        return null;
     }
 
     private static Integer[] extractLogicalScreenSize(ImageReader reader)
@@ -183,14 +176,13 @@ public class MediaSplitter
             {
                 IIOMetadataNode screenDescriptor = (IIOMetadataNode) globalScreenDescriptor.item(0);
 
-                if(screenDescriptor != null);
+                if (screenDescriptor != null) ;
                 size = new Integer[2];
                 size[0] = Integer.parseInt(screenDescriptor.getAttribute("logicalScreenWidth"));
                 size[1] = Integer.parseInt(screenDescriptor.getAttribute("logicalScreenHeight"));
             }
 
-        }
-        catch (IOException e)
+        } catch (IOException e)
         {
             e.printStackTrace();
         }

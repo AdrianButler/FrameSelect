@@ -4,8 +4,6 @@ import javafx.application.Application;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import kong.frameselect.framesplitter.MediaSplitter;
 
@@ -17,6 +15,11 @@ public class UIController extends Application //TODO add option to change image
 {
     private Scene scene;
     private HomePage homePage;
+
+    public static void start()
+    {
+        launch();
+    } //TODO finish https://youtu.be/4ukhZvOmAtk?t=217
 
     @Override
     public void start(Stage primaryStage) throws Exception
@@ -46,10 +49,4 @@ public class UIController extends Application //TODO add option to change image
 
         scene.setRoot(frameViewer);
     }
-
-
-    public static void start()
-    {
-        launch();
-    } //TODO finish https://youtu.be/4ukhZvOmAtk?t=217
 }

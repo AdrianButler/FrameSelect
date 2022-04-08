@@ -3,7 +3,8 @@ package kong.frameselect.gui; //TODO make arrows transparent and add option to h
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 
 import java.util.ArrayList;
 
@@ -22,8 +23,8 @@ public class FrameViewer extends Pane
         imageView.setImage(frames.get(0));
         bindImageView();
 
-        Triangle leftArrow = new Triangle(this,270.0);
-        Triangle rightArrow = new Triangle(this,90.0);
+        Triangle leftArrow = new Triangle(this, 270.0);
+        Triangle rightArrow = new Triangle(this, 90.0);
 
         IndexBar indexBar = new IndexBar();
         indexBar.setStyle("-fx-background-color: #00faa8");
@@ -60,9 +61,7 @@ public class FrameViewer extends Pane
         if (index < frames.size() - 1)
         {
             index += 1;
-        }
-
-        else
+        } else
         {
             index = 0;
         }
@@ -75,8 +74,7 @@ public class FrameViewer extends Pane
         if (index > 0)
         {
             index -= 1;
-        }
-        else
+        } else
         {
             index = frames.size() - 1;
         }

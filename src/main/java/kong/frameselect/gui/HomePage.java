@@ -1,16 +1,11 @@
 package kong.frameselect.gui;
 
-import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import javax.print.attribute.standard.DialogOwner;
 import java.io.File;
 import java.net.URISyntaxException;
 
@@ -18,6 +13,7 @@ public class HomePage extends BorderPane
 {
     private Stage primaryStage;
     private UIController uiController;
+
     public HomePage(Stage primaryStage, UIController uiController)
     {
         this.primaryStage = primaryStage;
@@ -35,8 +31,7 @@ public class HomePage extends BorderPane
         try
         {
             fileLogo = new Image(getClass().getResource("/kong/frameselect/FileLogo.png").toURI().toString());
-        }
-        catch (URISyntaxException e)
+        } catch (URISyntaxException e)
         {
             e.printStackTrace();
         }

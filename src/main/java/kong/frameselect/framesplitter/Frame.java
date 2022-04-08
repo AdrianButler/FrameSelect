@@ -1,10 +1,9 @@
 package kong.frameselect.framesplitter;
 
-import java.awt.image.BufferedImage;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+
+import java.awt.image.BufferedImage;
 
 @Data
 @AllArgsConstructor
