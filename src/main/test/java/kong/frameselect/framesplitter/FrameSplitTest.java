@@ -34,7 +34,7 @@ public class FrameSplitTest extends Application
         exampleImages.add(2, new Image(new File("C:\\Users\\butle\\OneDrive\\Pictures\\pcwallpaper22.png").toURI().toString()));
 
         BorderPane window = new BorderPane();
-        window.setCenter(new FrameViewer(exampleImages));
+        window.setCenter(new FrameViewer(exampleImages, primaryStage));
 
         Scene scene = new Scene(window, 1000, 750);
         primaryStage.setScene(scene);

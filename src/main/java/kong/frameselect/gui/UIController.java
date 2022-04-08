@@ -15,6 +15,7 @@ public class UIController extends Application //TODO add option to change image
 {
     private Scene scene;
     private HomePage homePage;
+    private Stage primaryStage;
 
     public static void start()
     {
@@ -24,6 +25,7 @@ public class UIController extends Application //TODO add option to change image
     @Override
     public void start(Stage primaryStage) throws Exception
     {
+        this.primaryStage = primaryStage;
         homePage = new HomePage(primaryStage, this);
         scene = new Scene(homePage, 1000, 750);
 
@@ -33,20 +35,32 @@ public class UIController extends Application //TODO add option to change image
 
     public void switchToFrameViewer(File file)
     {
-        ArrayList<BufferedImage> images = MediaSplitter.framesToBufferedImage(MediaSplitter.getGifFrames(file)); // extract images from frame
+        ArrayList<BufferedImage> images = MediaSplitter.framesToBufferedImage(MediaSplitter.getGifFrames(file));
 
-        ArrayList<Image> frames = new ArrayList<>();
-
-        for (BufferedImage frame : images)
-        {
-            Image newImage = SwingFXUtils.toFXImage(frame, null);
-            frames.add(newImage);
-        }
+        ArrayList<Image> frames = bufferedImageToFXImage(images);
 
         frames.add(0, new Image(file.toURI().toString()));
 
-        FrameViewer frameViewer = new FrameViewer(frames);
+        FrameViewer frameViewer = new FrameViewer(frames, primaryStage);
 
         scene.setRoot(frameViewer);
+    }
+
+    public static ArrayList<Image> bufferedImageToFXImage(ArrayList<BufferedImage> originalImages)
+    {
+        ArrayList<Image> fxImages = new ArrayList<>();
+
+        for (BufferedImage frame : originalImages)
+        {
+            Image fxImage = SwingFXUtils.toFXImage(frame, null);
+            fxImages.add(fxImage);
+        }
+
+        return fxImages;
+    }
+
+    public Stage getPrimaryStage()
+    {
+        return primaryStage;
     }
 }
