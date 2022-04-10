@@ -20,10 +20,10 @@ public class UIController extends Application
     public static void start()
     {
         launch();
-    } //TODO finish https://youtu.be/4ukhZvOmAtk?t=217
+    }
 
     @Override
-    public void start(Stage primaryStage) throws Exception
+    public void start(Stage primaryStage)
     {
         this.primaryStage = primaryStage;
         homePage = new HomePage(primaryStage, this);
@@ -57,10 +57,5 @@ public class UIController extends Application
         }
 
         return fxImages;
-    }
-
-    public Stage getPrimaryStage()
-    {
-        return primaryStage;
     }
 }

@@ -1,8 +1,6 @@
 package kong.frameselect.gui;
 
 import javafx.embed.swing.SwingFXUtils;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -15,8 +13,6 @@ import javafx.stage.Stage;
 import kong.frameselect.framesplitter.MediaSplitter;
 
 import javax.imageio.ImageIO;
-import javax.print.attribute.standard.Media;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -24,9 +20,9 @@ import java.util.ArrayList;
 
 public class FrameViewer extends Pane
 {
-    private ImageView imageView;
+    private final ImageView imageView;
+    private final Stage primaryStage;
     private StackPane imageViewPositioner;
-    private Stage primaryStage;
     private ArrayList<Image> frames;
     private int index;
 
@@ -72,20 +68,25 @@ public class FrameViewer extends Pane
             setFrames(fxImages);
         });
 
-        saveFrameButton.setOnAction(actionEvent -> //TODO this doesnt work on certain gifs??
+        saveFrameButton.setOnAction(actionEvent ->
         {
             if (index > 0)
             {
                 FileChooser saveFrame = new FileChooser();
                 saveFrame.setTitle("Save");
-                saveFrame.getExtensionFilters().addAll(new ExtensionFilter("Image Files", "*.jpg"));
+                saveFrame.getExtensionFilters().addAll(new ExtensionFilter("Image Files", "*.png"));
 
                 File frameLocation = saveFrame.showSaveDialog(primaryStage);
+
+                if (frameLocation == null)
+                {
+                    return;
+                }
 
                 BufferedImage bufferedImage = SwingFXUtils.fromFXImage(frames.get(index), null);
                 try
                 {
-                    ImageIO.write(bufferedImage, "jpg", frameLocation);
+                    System.out.println(ImageIO.write(bufferedImage, "PNG", frameLocation));
                 } catch (IOException e)
                 {
                     e.printStackTrace();
@@ -95,7 +96,7 @@ public class FrameViewer extends Pane
 
     }
 
-    private void bindImageView() // solution to center image in center of pane: https://stackoverflow.com/a/25601147/12568475
+    private void bindImageView()
     {
         imageView.fitWidthProperty().bind(widthProperty());
         imageView.fitHeightProperty().bind(heightProperty());

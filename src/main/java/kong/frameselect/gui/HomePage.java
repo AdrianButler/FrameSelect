@@ -11,8 +11,8 @@ import java.net.URISyntaxException;
 
 public class HomePage extends BorderPane
 {
-    private Stage primaryStage;
-    private UIController uiController;
+    private final Stage primaryStage;
+    private final UIController uiController;
 
     public HomePage(Stage primaryStage, UIController uiController)
     {
